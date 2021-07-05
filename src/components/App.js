@@ -1,35 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from './SearchBar';
-// import youtube from '../api/youtube'; // That' not use anymore
-import VideoList from './VideoList';
-import VideoDetail from './VideoDetail';
-
-import useVideos from '../hooks/useVideos';
-
-const KEY = 'AIzaSyBv9KdOQCDAbrN0Ukv-ROfJwUYPopnqP1U';
+import React from 'react';
+import SongList from './SongList';
+import SongDetail from './SongDetail';
+import Exercise from './Exercise';
 
 const App = () => {
-	const [ selectedVideo, setSelectedVideo ] = useState(null);
-
-	const [videos, search] = useVideos('buildings');
-
-	useEffect(() => {
-		setSelectedVideo(videos[0]);
-	},[videos])
-
-
 	return (
-		<div className="ui container">
-			<SearchBar onFormSubmit={search} />
-			<div className="ui grid">
-				<div className="ui row">
-					<div className="eleven wide column">
-						<VideoDetail video={selectedVideo} />
-					</div>
-					<div className="five wide column">
-						<VideoList videos={videos} onVideoSelect={setSelectedVideo} />
-					</div>
+		<div className="ui container grid">
+			<div className="ui row">
+				<div className="column eight wide">
+					<SongList />
 				</div>
+				<div className="column eight wide">
+					<SongDetail />
+				</div>
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<div>
+				<Exercise />
 			</div>
 		</div>
 	);
